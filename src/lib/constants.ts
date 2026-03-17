@@ -84,6 +84,16 @@ export const projects = [
     },
     image: "/images/habitflux.svg",
   },
+  {
+    title: "GourmetGuru - Food Ordering and Delivery System",
+    description:
+      "Developed a cross-platform habit tracking mobile application for Android and iOS. Implemented Firebase Authentication with Google Sign-In, built Firestore-based real-time data synchronization, and used Zustand for scalable state management. Generated production-ready APK builds using EAS.",
+    tech: ["React Native", "Firebase", "Firestore", "Zustand", "EAS"],
+    links: {
+      source: "https://github.com/LithiraJK/habitflux",
+    },
+    image: "/images/habitflux.svg",
+  },
 ];
 
 // Education
