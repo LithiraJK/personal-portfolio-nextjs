@@ -1,26 +1,26 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #0f1418;
+  --color-background: #050810;
   --color-foreground: #f0f2f5;
 
-  --color-card: #141a1f;
+  --color-card: #0a0f15;
 
   --color-primary: #20b2a6;
   --color-primary-foreground: #ffffff;
 
-  --color-secondary: #1f2830;
+  --color-secondary: #141a20;
   --color-secondary-foreground: #20b2a6;
 
-  --color-muted: #252e37;
+  --color-muted: #1a2229;
   --color-muted-foreground: #7a8491;
 
-  --color-border: #242b32;
+  --color-border: #1a1f26;
 
   --radius: 0.75rem;
 
   --color-highlight: #f5a623;
-  --color-surface: #1a2329;
+  --color-surface: #0f1418;
 }
 
 @layer base {
@@ -78,23 +78,6 @@
     background-size: 28px 28px;
   }
 
-  .bg-radial-glow {
-    background-image: radial-gradient(
-        800px 500px at 20% 20%,
-        color-mix(in srgb, var(--color-primary) 18%, transparent) 0%,
-        transparent 60%
-      ),
-      radial-gradient(
-        700px 450px at 80% 30%,
-        color-mix(in srgb, var(--color-highlight) 12%, transparent) 0%,
-        transparent 55%
-      ),
-      radial-gradient(
-        900px 600px at 55% 85%,
-        color-mix(in srgb, var(--color-secondary) 30%, transparent) 0%,
-        transparent 55%
-      );
-  }
 
   @keyframes fade-in {
     from {
