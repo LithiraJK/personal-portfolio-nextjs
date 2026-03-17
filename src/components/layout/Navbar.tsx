@@ -12,9 +12,9 @@ const Navbar = () => {
 
   const navItems: Array<{ id: string; label: string }> = [
     { id: "about", label: "About" },
-    { id: "skills", label: "Skills" },
     { id: "projects", label: "Projects" },
     { id: "experience", label: "Experience" },
+    { id: "testimonials", label: "Testimonials" },
     { id: "contact", label: "Contact" },
   ];
 
@@ -26,17 +26,17 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 w-full z-50">
       <div className="glass border-b border-border">
-        <div className="mx-auto max-w-6xl px-4 py-3 flex justify-between items-center">
+        <div className="mx-auto max-w-6xl px-4 py-3 flex items-center">
           <button
             onClick={() => handleNav("home")}
-            className="text-lg md:text-xl font-semibold tracking-tight"
+            className="text-base md:text-lg font-semibold tracking-tight"
             aria-label="Go to top"
           >
-            <span className="glow-text">{personalInfo.name}</span>
+            <span className="glow-text">LJ.</span>
           </button>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center gap-2">
+          <div className="hidden md:flex items-center gap-2 mx-auto">
             {navItems.map((item) => (
               <button
                 key={item.id}
@@ -46,34 +46,30 @@ const Navbar = () => {
                 {item.label}
               </button>
             ))}
+          </div>
 
-            <div className="ml-2 flex items-center gap-2">
-              <a
-                href={personalInfo.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 rounded-[var(--radius)] text-muted-foreground hover:text-foreground hover:bg-[color-mix(in_srgb,var(--color-surface)_60%,transparent)] transition"
-                aria-label="GitHub"
-              >
-                <FaGithub aria-hidden="true" />
-              </a>
-              <a
-                href={personalInfo.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 rounded-[var(--radius)] text-muted-foreground hover:text-foreground hover:bg-[color-mix(in_srgb,var(--color-surface)_60%,transparent)] transition"
-                aria-label="LinkedIn"
-              >
-                <FaLinkedin aria-hidden="true" />
-              </a>
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => handleNav("contact")}
-              >
-                Contact
-              </Button>
-            </div>
+          <div className="hidden md:flex items-center gap-2">
+            <a
+              href={personalInfo.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 rounded-[var(--radius)] text-muted-foreground hover:text-foreground hover:bg-[color-mix(in_srgb,var(--color-surface)_60%,transparent)] transition"
+              aria-label="GitHub"
+            >
+              <FaGithub aria-hidden="true" />
+            </a>
+            <a
+              href={personalInfo.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 rounded-[var(--radius)] text-muted-foreground hover:text-foreground hover:bg-[color-mix(in_srgb,var(--color-surface)_60%,transparent)] transition"
+              aria-label="LinkedIn"
+            >
+              <FaLinkedin aria-hidden="true" />
+            </a>
+            <Button size="sm" onClick={() => handleNav("contact")}>
+              Contact Me
+            </Button>
           </div>
 
           {/* Mobile Menu Button */}

@@ -7,6 +7,7 @@ export const personalInfo = {
   location: "Galle, Sri Lanka",
   linkedin: "https://www.linkedin.com/in/lithira-jayanaka",
   github: "https://github.com/LithiraJK",
+  availability: "Available for work",
   profileSummary:
     "Full-Stack Developer and Software Engineering undergraduate specializing in scalable web and cross-platform mobile application development. Technically proficient in Java (Spring Boot), the MERN Stack (MongoDB, Express.js, React.js, Node.js), React Native, and Python. Experienced in designing RESTful APIs, secure JWT authentication, payment gateway integration, and real-time communication systems. Adept at logical problem-solving and streamlined deployments using Docker and Vercel. A quick learner seeking a Junior Software Engineer role or Internship to leverage technical expertise in delivering innovative solutions.",
 };
@@ -126,6 +127,28 @@ export const references = [
     title: "CEO at Sans Technologies | Senior Lecturer at IUSE",
     email: "udarasan@sans-technologies.com",
     phone: "+94 788409788",
+  },
+];
+
+// Testimonials (not included in CV — placeholders you can replace anytime)
+export const testimonials = [
+  {
+    quote:
+      "Lithira is highly dependable and consistently delivers clean, scalable solutions. He communicates clearly and takes ownership of features end-to-end.",
+    name: "Engineering Mentor",
+    title: "Software Engineering",
+  },
+  {
+    quote:
+      "Strong problem-solving skills and great attention to detail. Lithira quickly adapts to new tools and contributes effectively in a team environment.",
+    name: "Project Supervisor",
+    title: "Full-Stack Development",
+  },
+  {
+    quote:
+      "Excellent work ethic and fast learning curve. Lithira’s ability to break down complex requirements into a clear implementation plan is impressive.",
+    name: "Team Lead",
+    title: "Product Engineering",
   },
 ];
 

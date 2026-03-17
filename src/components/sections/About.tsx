@@ -1,47 +1,85 @@
 import SectionTitle from "@/components/ui/SectionTitle";
 import { personalInfo } from "@/lib/constants";
+import { FaCode, FaBolt, FaUsers, FaLightbulb } from "react-icons/fa";
 
 const About = () => {
   return (
     <section id="about" className="mt-16 md:mt-20">
       <div className="mx-auto max-w-6xl px-4">
-        <SectionTitle
-          title="About"
-          subtitle="A quick snapshot of who I am and what I enjoy building."
-        />
+        <SectionTitle title="About me" subtitle="A bit more about how I build." />
 
-        <div className="grid md:grid-cols-[220px_1fr] gap-8 items-start">
-          <div className="glass rounded-[var(--radius)] p-6 flex items-center justify-center">
-            <div className="h-32 w-32 rounded-full bg-[color-mix(in_srgb,var(--color-primary)_18%,transparent)] border border-border flex items-center justify-center">
-              <span className="text-3xl font-semibold glow-text">
-                {personalInfo.name
-                  .split(" ")
-                  .map((p) => p[0])
-                  .slice(0, 2)
-                  .join("")}
-              </span>
-            </div>
-          </div>
+        <div className="grid lg:grid-cols-2 gap-10 items-start">
+          <div>
+            <p className="text-3xl md:text-4xl font-semibold tracking-tight leading-tight">
+              Building the future,{" "}
+              <span className="font-serif italic">one</span> component at a
+              time.
+            </p>
 
-          <div className="glass-strong rounded-[var(--radius)] p-6 md:p-8">
-            <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
+            <p className="mt-5 text-sm md:text-base leading-relaxed text-muted-foreground">
               {personalInfo.profileSummary}
             </p>
 
-            <div className="mt-6 grid sm:grid-cols-2 gap-4 text-sm">
-              <div className="rounded-[var(--radius)] border border-border p-4 bg-[color-mix(in_srgb,var(--color-surface)_55%,transparent)]">
-                <p className="text-muted-foreground">Location</p>
-                <p className="mt-1 text-foreground">{personalInfo.location}</p>
+            <div className="mt-7 glass rounded-[var(--radius)] p-6 border border-border">
+              <p className="text-sm text-muted-foreground">
+                “My mission is to create digital experiences that are not just
+                functional, but truly delightful — products users love and
+                developers enjoy maintaining.”
+              </p>
+              <div className="mt-4 grid sm:grid-cols-2 gap-4 text-sm">
+                <div className="rounded-[var(--radius)] border border-border p-4 bg-[color-mix(in_srgb,var(--color-surface)_55%,transparent)]">
+                  <p className="text-muted-foreground">Location</p>
+                  <p className="mt-1 text-foreground">{personalInfo.location}</p>
+                </div>
+                <div className="rounded-[var(--radius)] border border-border p-4 bg-[color-mix(in_srgb,var(--color-surface)_55%,transparent)]">
+                  <p className="text-muted-foreground">Email</p>
+                  <a
+                    href={`mailto:${personalInfo.email}`}
+                    className="mt-1 block text-foreground hover:text-primary transition break-all"
+                  >
+                    {personalInfo.email}
+                  </a>
+                </div>
               </div>
-              <div className="rounded-[var(--radius)] border border-border p-4 bg-[color-mix(in_srgb,var(--color-surface)_55%,transparent)]">
-                <p className="text-muted-foreground">Email</p>
-                <a
-                  href={`mailto:${personalInfo.email}`}
-                  className="mt-1 block text-foreground hover:text-primary transition break-all"
-                >
-                  {personalInfo.email}
-                </a>
+            </div>
+          </div>
+
+          <div className="grid sm:grid-cols-2 gap-4">
+            <div className="glass-strong rounded-[var(--radius)] p-6">
+              <div className="text-primary">
+                <FaCode aria-hidden="true" />
               </div>
+              <h3 className="mt-4 font-semibold">Clean Code</h3>
+              <p className="mt-2 text-sm text-muted-foreground">
+                Writing maintainable, scalable code that stands the test of time.
+              </p>
+            </div>
+            <div className="glass-strong rounded-[var(--radius)] p-6">
+              <div className="text-primary">
+                <FaBolt aria-hidden="true" />
+              </div>
+              <h3 className="mt-4 font-semibold">Performance</h3>
+              <p className="mt-2 text-sm text-muted-foreground">
+                Optimizing for speed and delivering smooth user experiences.
+              </p>
+            </div>
+            <div className="glass-strong rounded-[var(--radius)] p-6">
+              <div className="text-primary">
+                <FaUsers aria-hidden="true" />
+              </div>
+              <h3 className="mt-4 font-semibold">Collaboration</h3>
+              <p className="mt-2 text-sm text-muted-foreground">
+                Working closely with teams to bring ideas to life.
+              </p>
+            </div>
+            <div className="glass-strong rounded-[var(--radius)] p-6">
+              <div className="text-primary">
+                <FaLightbulb aria-hidden="true" />
+              </div>
+              <h3 className="mt-4 font-semibold">Innovation</h3>
+              <p className="mt-2 text-sm text-muted-foreground">
+                Staying aligned with modern tools and best practices.
+              </p>
             </div>
           </div>
         </div>

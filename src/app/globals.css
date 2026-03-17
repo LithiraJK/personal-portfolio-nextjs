@@ -69,6 +69,33 @@
 }
 
 @layer utilities {
+  .bg-dots {
+    background-image: radial-gradient(
+      circle at 1px 1px,
+      color-mix(in srgb, var(--color-border) 60%, transparent) 1px,
+      transparent 0
+    );
+    background-size: 28px 28px;
+  }
+
+  .bg-radial-glow {
+    background-image: radial-gradient(
+        800px 500px at 20% 20%,
+        color-mix(in srgb, var(--color-primary) 18%, transparent) 0%,
+        transparent 60%
+      ),
+      radial-gradient(
+        700px 450px at 80% 30%,
+        color-mix(in srgb, var(--color-highlight) 12%, transparent) 0%,
+        transparent 55%
+      ),
+      radial-gradient(
+        900px 600px at 55% 85%,
+        color-mix(in srgb, var(--color-secondary) 30%, transparent) 0%,
+        transparent 55%
+      );
+  }
+
   @keyframes fade-in {
     from {
       opacity: 0;
