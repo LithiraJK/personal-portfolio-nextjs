@@ -17,7 +17,7 @@ export default function Testimonials() {
 
   return (
     <section id="testimonials" className="mt-16 md:mt-20">
-      <div className="mx-auto max-w-6xl px-4">
+      <div className="mx-auto max-w-3xl px-4">
         <SectionTitle
           title="Kind words from amazing people."
           subtitle="Testimonials are placeholders — replace them with real feedback anytime."

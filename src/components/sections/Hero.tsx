@@ -37,9 +37,9 @@ const Hero = () => {
                 Contact Me <FiArrowRight aria-hidden="true" />
               </Button>
               <a
-                href={personalInfo.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/pdf/LITHIRA%20JAYANAKA_CV_V2.pdf"
+                download="Lithira-Jayanaka-CV.pdf"
+                aria-label="Download CV as PDF"
               >
                 <Button variant="outline">
                   Download CV <FiDownload aria-hidden="true" />
@@ -87,7 +87,7 @@ const Hero = () => {
 
               <div className="mt-4 relative aspect-[3/4] rounded-[calc(var(--radius)-4px)] overflow-hidden border border-border bg-[color-mix(in_srgb,var(--color-surface)_70%,transparent)]">
                 <Image
-                  src="/images/profile.svg"
+                  src="/images/profile.png"
                   alt="Profile"
                   fill
                   className="object-cover"

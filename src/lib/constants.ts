@@ -61,7 +61,7 @@ export const projects = [
       backend: "https://github.com/LithiraJK/tripvisito-backend",
       live: "https://tripvisito.vercel.app",
     },
-    image: "/images/tripvisito.svg",
+    image: "/images/tripvisito.png",
   },
   {
     title: "Skill Worker - Freelance Marketplace Platform",
@@ -72,7 +72,7 @@ export const projects = [
       frontend: "https://github.com/LithiraJK/skillworker-frontend",
       backend: "https://github.com/LithiraJK/skillworker-backend",
     },
-    image: "/images/skillworker.svg",
+    image: "/images/skillworker.png",
   },
   {
     title: "HabitFlux - Habit Tracking Mobile Application",

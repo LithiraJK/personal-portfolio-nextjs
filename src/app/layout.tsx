@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import BackgroundEffects from "@/components/effects/BackgroundEffects";
 import "./globals.css";
 
 const inter = Inter({
@@ -31,6 +32,7 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
       <body className="font-sans bg-background text-foreground antialiased">
         <div className="min-h-screen bg-dots bg-radial-glow">
+          <BackgroundEffects />
           <Navbar />
           <main className="min-h-screen overflow-hidden">{children}</main>
           <Footer />
