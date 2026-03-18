@@ -3,6 +3,7 @@
 import * as React from "react";
 import SectionTitle from "@/components/ui/SectionTitle";
 import Button from "@/components/ui/Button";
+import ParticlesField from "@/components/effects/ParticlesField";
 import { personalInfo } from "@/lib/constants";
 import { FaEnvelope, FaPhoneAlt } from "react-icons/fa";
 import { HiLocationMarker } from "react-icons/hi";
@@ -23,7 +24,11 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="mt-16 md:mt-20 pb-16">
+    <section id="contact" className="relative isolate overflow-hidden mt-16 md:mt-20 pb-16">
+      <ParticlesField
+        className="pointer-events-none absolute inset-0 -z-10"
+        particleClassName="pointer-events-none absolute rounded-full bg-cyan-200/90 shadow-[0_0_12px_rgba(103,232,249,0.95)]"
+      />
       <div className="mx-auto max-w-6xl px-4">
         <SectionTitle
           title="Let’s build something great."

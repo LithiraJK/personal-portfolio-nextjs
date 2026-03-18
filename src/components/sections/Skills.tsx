@@ -2,6 +2,8 @@
 
 import * as React from "react";
 import SectionTitle from "@/components/ui/SectionTitle";
+import FloatingSkills from "@/components/ui/FloatingSkills";
+import ParticlesField from "@/components/effects/ParticlesField";
 import { skills } from "@/lib/constants";
 import useGsapScrollReveal from "@/hooks/useGsapScrollReveal";
 import { motion } from "framer-motion";
@@ -32,10 +34,9 @@ import {
   FaMobileAlt,
 } from "react-icons/fa";
 
-type SkillCategory = "All" | "Frontend" | "Backend" | "Mobile" | "Database" | "Tools" | "Concepts" | "Soft";
+type SkillCategory = "Frontend" | "Backend" | "Mobile" | "Database" | "Tools" | "Concepts" | "Soft";
 
 const categories: SkillCategory[] = [
-  "All",
   "Frontend",
   "Backend",
   "Mobile",
@@ -115,7 +116,7 @@ export default function Skills() {
     stagger: 0.06,
   });
 
-  const [active, setActive] = React.useState<SkillCategory>("All");
+  const [active, setActive] = React.useState<SkillCategory>("Backend");
 
   const enriched = React.useMemo(() => {
     return skills.map((s) => ({
@@ -125,15 +126,21 @@ export default function Skills() {
     }));
   }, []);
 
-  const shown = enriched.filter((s) => active === "All" || s.category === active);
+  const shown = enriched.filter((s) => s.category === active);
 
   return (
-    <section id="skills" className="mt-16 md:mt-20">
+    <section id="skills" className="relative isolate overflow-hidden mt-16 md:mt-20">
+      <ParticlesField
+        className="pointer-events-none absolute inset-0 -z-10"
+        particleClassName="pointer-events-none absolute rounded-full bg-cyan-200 shadow-[0_0_12px_rgba(103,232,249,0.95)]"
+      />
       <div ref={revealRef} className="mx-auto max-w-6xl px-4">
         <SectionTitle
           title="Skills"
           subtitle="Interactive skill cards with quick filters."
         />
+
+        <FloatingSkills />
 
         <div
           data-reveal

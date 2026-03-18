@@ -68,7 +68,11 @@ const Navbar = () => {
             >
               <FaLinkedin aria-hidden="true" />
             </a>
-            <Button size="sm" onClick={() => handleNav("contact")}>
+            <Button
+              size="sm"
+              onClick={() => handleNav("contact")}
+              className="h-10 rounded-full border border-cyan-300/50 bg-gradient-to-r from-teal-400 to-cyan-300 px-4 text-zinc-950 shadow-[0_0_22px_rgba(44,220,212,0.32)] transition hover:brightness-105"
+            >
               Contact Me
             </Button>
           </div>
