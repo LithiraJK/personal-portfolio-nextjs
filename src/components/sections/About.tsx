@@ -26,21 +26,6 @@ const About = () => {
                 functional, but truly delightful — products users love and
                 developers enjoy maintaining.”
               </p>
-              <div className="mt-4 grid sm:grid-cols-2 gap-4 text-sm">
-                <div className="rounded-[var(--radius)] border border-border p-4 bg-[color-mix(in_srgb,var(--color-surface)_55%,transparent)]">
-                  <p className="text-muted-foreground">Location</p>
-                  <p className="mt-1 text-foreground">{personalInfo.location}</p>
-                </div>
-                <div className="rounded-[var(--radius)] border border-border p-4 bg-[color-mix(in_srgb,var(--color-surface)_55%,transparent)]">
-                  <p className="text-muted-foreground">Email</p>
-                  <a
-                    href={`mailto:${personalInfo.email}`}
-                    className="mt-1 block text-foreground hover:text-primary transition break-all"
-                  >
-                    {personalInfo.email}
-                  </a>
-                </div>
-              </div>
             </div>
           </div>
 

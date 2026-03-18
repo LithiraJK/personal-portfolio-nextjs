@@ -50,7 +50,7 @@ export default function Experience() {
               className={[
                 "px-4 py-2 rounded-full text-sm transition",
                 activeTab === "education"
-                  ? "bg-[color-mix(in_srgb,var(--color-primary)_22%,transparent)] text-foreground glow-border"
+                  ? "bg-[color-mix(in_srgb,var(--color-primary)_22%,transparent)] text-primary glow-border"
                   : "text-muted-foreground hover:text-foreground hover:bg-[color-mix(in_srgb,var(--color-surface)_55%,transparent)]",
               ].join(" ")}
               onClick={() => setActiveTab("education")}
@@ -63,7 +63,7 @@ export default function Experience() {
               className={[
                 "px-4 py-2 rounded-full text-sm transition",
                 activeTab === "experience"
-                  ? "bg-[color-mix(in_srgb,var(--color-primary)_22%,transparent)] text-foreground glow-border"
+                  ? "bg-[color-mix(in_srgb,var(--color-primary)_22%,transparent)] text-primary glow-border"
                   : "text-muted-foreground hover:text-foreground hover:bg-[color-mix(in_srgb,var(--color-surface)_55%,transparent)]",
               ].join(" ")}
               onClick={() => setActiveTab("experience")}
