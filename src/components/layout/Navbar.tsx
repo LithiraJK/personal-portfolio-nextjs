@@ -41,9 +41,10 @@ const Navbar = () => {
               <button
                 key={item.id}
                 onClick={() => handleNav(item.id)}
-                className="px-3 py-2 rounded-[var(--radius)] text-sm text-muted-foreground hover:text-foreground hover:bg-[color-mix(in_srgb,var(--color-surface)_60%,transparent)] transition"
+                className="group relative px-3 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
                 {item.label}
+                <span className="absolute bottom-0 left-0 h-0.5 w-0 bg-primary transition-all duration-300 group-hover:w-full" />
               </button>
             ))}
           </div>
@@ -114,9 +115,10 @@ const Navbar = () => {
               <button
                 key={item.id}
                 onClick={() => handleNav(item.id)}
-                className="text-left px-3 py-2 rounded-[var(--radius)] text-sm text-muted-foreground hover:text-foreground hover:bg-[color-mix(in_srgb,var(--color-surface)_60%,transparent)] transition"
+                className="group relative text-left px-3 py-2 rounded-[var(--radius)] text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
                 {item.label}
+                <span className="absolute bottom-0 left-0 h-0.5 w-0 bg-primary transition-all duration-300 group-hover:w-24" />
               </button>
             ))}
             <div className="mt-2 flex items-center gap-3 px-3">

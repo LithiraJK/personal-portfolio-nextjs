@@ -1,3 +1,5 @@
+"use client";
+
 import { personalInfo } from "@/lib/constants";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 

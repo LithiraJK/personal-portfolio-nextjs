@@ -15,7 +15,7 @@ const Hero = () => {
   return (
     <section id="home" className="relative pt-28 md:pt-32">
       <div className="mx-auto max-w-6xl px-4">
-        <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-center">
+        <div className="grid lg:grid-cols-[1.3fr_0.7fr] gap-10 items-center">
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass border border-border text-xs text-muted-foreground">
               <span className="h-2 w-2 rounded-full bg-primary shadow-[0_0_18px_color-mix(in_srgb,var(--color-primary)_55%,transparent)]" />
@@ -23,9 +23,8 @@ const Hero = () => {
             </div>
 
             <h1 className="mt-6 text-4xl md:text-6xl font-semibold tracking-tight leading-[1.05]">
-              Crafting{" "}
-              <span className="text-primary">digital</span> experiences with{" "}
-              <span className="font-serif italic">precision</span>.
+              Crafting <span className="text-primary">digital</span> experiences
+              with <span className="font-serif italic">precision</span>.
             </h1>
 
             <p className="mt-5 max-w-2xl text-sm md:text-base leading-relaxed text-muted-foreground">
@@ -79,10 +78,6 @@ const Hero = () => {
                   <span className="mx-1">—</span> Present
                   <div className="mt-1">Learning & building</div>
                 </div>
-                <span className="inline-flex items-center gap-2 text-xs text-muted-foreground">
-                  <span className="h-2 w-2 rounded-full bg-primary" />
-                  {personalInfo.availability}
-                </span>
               </div>
 
               <div className="mt-4 relative aspect-[3/4] rounded-[calc(var(--radius)-4px)] overflow-hidden border border-border bg-[color-mix(in_srgb,var(--color-surface)_70%,transparent)]">
@@ -94,6 +89,12 @@ const Hero = () => {
                   sizes="(max-width: 1024px) 100vw, 40vw"
                   priority
                 />
+              </div>
+              <div className="flex items-center mt-2 justify-end w-full">
+                <span className="inline-flex items-center gap-2 text-xs text-muted-foreground">
+                  <span className="h-2 w-2 rounded-full bg-primary" />
+                  {personalInfo.availability}
+                </span>
               </div>
             </div>
           </div>
@@ -108,4 +109,4 @@ const Hero = () => {
   );
 };
 
-export default Hero
+export default Hero;

@@ -93,6 +93,16 @@ export const projects = [
       source: "https://github.com/LithiraJK/habitflux",
     },
     image: "/images/habitflux.svg",
+  },{
+    title: "CelonXploer - Travel Blog Site",
+    description:
+      "Designed and developed a full-stack freelance marketplace tailored for Sri Lanka. Built RESTful APIs and containerized backend services using Docker. Implemented secure authentication using JWT and Google OAuth, integrated the PayHere payment gateway for subscription management, and developed real-time chat functionality using WebSocket.",
+    tech: ["Spring Boot", "Hibernate", "Docker", "JWT", "WebSocket", "PayHere"],
+    links: {
+      frontend: "https://github.com/LithiraJK/skillworker-frontend",
+      backend: "https://github.com/LithiraJK/skillworker-backend",
+    },
+    image: "/images/skillworker.png",
   },
 ];
 
