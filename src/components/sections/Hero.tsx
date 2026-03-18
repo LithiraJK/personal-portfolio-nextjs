@@ -147,7 +147,7 @@ const Hero = () => {
             variants={profileCardVariants}
             initial="hidden"
             animate="visible"
-            className="relative"
+            className="relative w-full max-w-[360px] mx-auto lg:ml-auto"
           >
             <motion.div
               className="absolute -inset-6 -z-10 rounded-[calc(var(--radius)+16px)] bg-[color-mix(in_srgb,var(--color-primary)_18%,transparent)] blur-2xl animate-float"
@@ -161,7 +161,7 @@ const Hero = () => {
               }}
             />
             <motion.div
-              className="glass-strong rounded-[var(--radius)] p-4 md:p-5 glow-border"
+              className="glass-strong rounded-[var(--radius)] p-3.5 md:p-4 glow-border"
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
             >

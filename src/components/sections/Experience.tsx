@@ -3,6 +3,7 @@
 import * as React from "react";
 import { motion } from "framer-motion";
 import SectionTitle from "@/components/ui/SectionTitle";
+import ParticlesField from "@/components/effects/ParticlesField";
 import { education, leadership } from "@/lib/constants";
 
 type TimelineEntry = {
@@ -32,7 +33,11 @@ export default function Experience() {
   const entries = activeTab === "education" ? educationEntries : experienceEntries;
 
   return (
-    <section id="experience" className="mt-16 md:mt-20">
+    <section id="experience" className="relative isolate overflow-hidden mt-16 md:mt-20">
+      <ParticlesField
+        className="pointer-events-none absolute inset-0 -z-10"
+        particleClassName="pointer-events-none absolute rounded-full bg-cyan-200/90 shadow-[0_0_12px_rgba(103,232,249,0.95)]"
+      />
       <div className="mx-auto max-w-6xl px-4">
         <SectionTitle
           title="Experience that speaks volumes."
