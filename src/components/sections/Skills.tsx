@@ -143,9 +143,12 @@ export default function Skills() {
             {categories.map((c) => {
               const selected = c === active;
               return (
-                <button
+                <motion.button
                   key={c}
                   onClick={() => setActive(c)}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.98 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 17 }}
                   className={[
                     "px-3 py-1.5 rounded-full text-sm border transition",
                     selected
@@ -155,18 +158,27 @@ export default function Skills() {
                   aria-pressed={selected}
                 >
                   {c}
-                </button>
+                </motion.button>
               );
             })}
           </div>
 
-          <div className="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {shown.map((s) => (
+          <motion.div
+            className="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3 }}
+            key={active}
+          >
+            {shown.map((s, idx) => (
               <motion.div
                 key={s.name}
                 data-reveal
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: idx * 0.08, ease: "easeOut" }}
+                exit={{ opacity: 0, y: -20 }}
                 whileHover={{ y: -6, rotateX: 2, rotateY: -2 }}
-                transition={{ type: "spring", stiffness: 280, damping: 20 }}
                 className="group [transform-style:preserve-3d]"
               >
                 <div className="glass rounded-[var(--radius)] p-5 border border-border glow-border animated-border transition will-change-transform">
@@ -188,16 +200,19 @@ export default function Skills() {
                   </div>
 
                   <div className="mt-4 h-2 rounded-full bg-[color-mix(in_srgb,var(--color-surface)_70%,transparent)] border border-border overflow-hidden">
-                    <div
+                    <motion.div
                       className="h-full rounded-full bg-[color-mix(in_srgb,var(--color-primary)_70%,transparent)]"
-                      style={{ width: `${s.pct}%` }}
+                      initial={{ width: 0 }}
+                      whileInView={{ width: `${s.pct}%` }}
+                      transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
+                      viewport={{ once: true, margin: "-50px" }}
                       aria-hidden="true"
                     />
                   </div>
                 </div>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

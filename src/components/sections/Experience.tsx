@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { motion } from "framer-motion";
 import SectionTitle from "@/components/ui/SectionTitle";
 import { education, leadership } from "@/lib/constants";
 
@@ -76,13 +77,26 @@ export default function Experience() {
         <div className="relative mt-10">
           <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-border" />
 
-          <div className="space-y-6">
+          <motion.div
+            className="space-y-6"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.4 }}
+            key={activeTab}
+          >
             {entries.map((item, idx) => {
               const isLeft = idx % 2 === 0;
               return (
-                <div
+                <motion.div
                   key={`${item.title}-${idx}`}
                   className="relative md:grid md:grid-cols-2 md:gap-10 items-center"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    duration: 0.5,
+                    delay: idx * 0.1,
+                    ease: "easeOut",
+                  }}
                 >
                   <div
                     className={[
@@ -90,7 +104,11 @@ export default function Experience() {
                       isLeft ? "md:pr-10" : "md:col-start-2 md:pl-10",
                     ].join(" ")}
                   >
-                    <div className="glass-strong rounded-[var(--radius)] p-6 md:p-7 glow-border">
+                    <motion.div
+                      className="glass-strong rounded-[var(--radius)] p-6 md:p-7 glow-border"
+                      whileHover={{ scale: 1.02, y: -4 }}
+                      transition={{ duration: 0.3 }}
+                    >
                       <div className="flex items-start justify-between gap-4">
                         <div>
                           <p className="text-xs text-primary font-medium">
@@ -112,16 +130,30 @@ export default function Experience() {
                           {item.description}
                         </p>
                       ) : null}
-                    </div>
+                    </motion.div>
                   </div>
 
                   <div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2">
-                    <div className="h-3 w-3 rounded-full bg-primary shadow-[0_0_28px_color-mix(in_srgb,var(--color-primary)_55%,transparent)]" />
+                    <motion.div
+                      className="h-3 w-3 rounded-full bg-primary shadow-[0_0_28px_color-mix(in_srgb,var(--color-primary)_55%,transparent)]"
+                      animate={{
+                        boxShadow: [
+                          "0 0 20px rgba(var(--color-primary-rgb), 0.4)",
+                          "0 0 40px rgba(var(--color-primary-rgb), 0.2)",
+                          "0 0 20px rgba(var(--color-primary-rgb), 0.4)",
+                        ],
+                      }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                      }}
+                    />
                   </div>
-                </div>
+                </motion.div>
               );
             })}
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

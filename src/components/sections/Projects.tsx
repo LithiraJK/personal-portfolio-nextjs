@@ -1,8 +1,9 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import { motion } from "framer-motion";
 import SectionTitle from "@/components/ui/SectionTitle";
-import Card from "@/components/ui/Card";
+import AnimatedCard from "@/components/ui/AnimatedCard";
 import Pagination from "@/components/ui/Pagination";
 import { projects } from "@/lib/constants";
 
@@ -30,10 +31,17 @@ const Projects = () => {
           subtitle="A few builds showcasing full-stack development, payments, and real-time features."
         />
 
-        <div className="grid md:grid-cols-2 gap-6">
-          {paginationData.paginatedProjects.map((p) => (
-            <Card
+        <motion.div
+          className="grid md:grid-cols-2 gap-6"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.4 }}
+          key={`projects-page-${currentPage}`}
+        >
+          {paginationData.paginatedProjects.map((p, idx) => (
+            <AnimatedCard
               key={p.title}
+              index={idx}
               title={p.title}
               description={p.description}
               tech={p.tech}
@@ -41,7 +49,7 @@ const Projects = () => {
               image={p.image}
             />
           ))}
-        </div>
+        </motion.div>
 
         {paginationData.totalPages > 1 && (
           <Pagination
