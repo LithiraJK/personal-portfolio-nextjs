@@ -54,7 +54,7 @@ const Navbar = () => {
               href={personalInfo.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 rounded-[var(--radius)] text-muted-foreground hover:text-foreground hover:bg-[color-mix(in_srgb,var(--color-surface)_60%,transparent)] transition"
+              className="p-2 rounded-(--radius) text-muted-foreground hover:text-foreground hover:bg-[color-mix(in_srgb,var(--color-surface)_60%,transparent)] transition"
               aria-label="GitHub"
             >
               <FaGithub aria-hidden="true" />
@@ -63,7 +63,7 @@ const Navbar = () => {
               href={personalInfo.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 rounded-[var(--radius)] text-muted-foreground hover:text-foreground hover:bg-[color-mix(in_srgb,var(--color-surface)_60%,transparent)] transition"
+              className="p-2 rounded-(--radius) text-muted-foreground hover:text-foreground hover:bg-[color-mix(in_srgb,var(--color-surface)_60%,transparent)] transition"
               aria-label="LinkedIn"
             >
               <FaLinkedin aria-hidden="true" />
@@ -71,7 +71,7 @@ const Navbar = () => {
             <Button
               size="sm"
               onClick={() => handleNav("contact")}
-              className="h-10 rounded-full border border-cyan-300/50 bg-gradient-to-r from-teal-400 to-cyan-300 px-4 text-zinc-950 shadow-[0_0_22px_rgba(44,220,212,0.32)] transition hover:brightness-105"
+              className="h-10 rounded-full border border-cyan-300/50 bg-linear-to-r from-teal-400 to-cyan-300 px-4 text-zinc-950 shadow-[0_0_22px_rgba(44,220,212,0.32)] transition hover:brightness-105"
             >
               Contact Me
             </Button>
@@ -79,7 +79,7 @@ const Navbar = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 rounded-[var(--radius)] hover:bg-[color-mix(in_srgb,var(--color-surface)_60%,transparent)] transition"
+            className="md:hidden p-2 rounded-(--radius) hover:bg-[color-mix(in_srgb,var(--color-surface)_60%,transparent)] transition"
             onClick={() => setIsOpen((v) => !v)}
             aria-expanded={isOpen}
             aria-controls="mobile-menu"
@@ -119,7 +119,7 @@ const Navbar = () => {
               <button
                 key={item.id}
                 onClick={() => handleNav(item.id)}
-                className="group relative text-left px-3 py-2 rounded-[var(--radius)] text-sm text-muted-foreground hover:text-foreground transition-colors"
+                className="group relative text-left px-3 py-2 rounded-(--radius) text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
                 {item.label}
                 <span className="absolute bottom-0 left-0 h-0.5 w-0 bg-primary transition-all duration-300 group-hover:w-24" />

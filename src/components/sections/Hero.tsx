@@ -55,7 +55,7 @@ const Hero = () => {
     <section id="home" className="relative isolate overflow-hidden pt-28 md:pt-32 lg:pt-36">
       <div className="pointer-events-none absolute inset-0 -z-20 bg-zinc-950" />
       <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(90%_65%_at_50%_52%,rgba(3,180,168,0.18)_0%,rgba(2,20,26,0.75)_48%,rgba(3,6,12,0.98)_100%)]" />
-      <div className="pointer-events-none absolute left-1/2 top-[52%] -z-10 h-[300px] w-[82vw] max-w-5xl -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(28,201,190,0.2)_0%,rgba(28,201,190,0.08)_35%,rgba(28,201,190,0)_72%)] blur-2xl" />
+      <div className="pointer-events-none absolute left-1/2 top-[52%] -z-10 h-75 w-[82vw] max-w-5xl -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(28,201,190,0.2)_0%,rgba(28,201,190,0.08)_35%,rgba(28,201,190,0)_72%)] blur-2xl" />
       <div className="pointer-events-none absolute left-0 right-0 top-1/2 -z-10 h-px bg-[linear-gradient(90deg,rgba(0,0,0,0)_0%,rgba(49,231,221,0.45)_50%,rgba(0,0,0,0)_100%)] opacity-65 blur-[1px]" />
       <div className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-8 w-[90vw] max-w-6xl -translate-x-1/2 -translate-y-1/2 bg-[radial-gradient(closest-side,rgba(35,220,210,0.2),rgba(35,220,210,0))] blur-xl" />
 
@@ -77,7 +77,7 @@ const Hero = () => {
               className="mt-6 text-4xl font-semibold leading-[1.02] tracking-tight text-zinc-100 sm:text-5xl md:text-6xl"
             >
               Crafting{" "}
-              <span className="bg-gradient-to-r from-emerald-300 via-cyan-300 to-teal-400 bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-emerald-300 via-cyan-300 to-teal-400 bg-clip-text text-transparent">
                 digital
               </span>
               <br />
@@ -99,7 +99,7 @@ const Hero = () => {
             >
               <Button
                 onClick={() => scrollTo("contact")}
-                className="h-12 rounded-full border border-cyan-300/50 bg-gradient-to-r from-teal-400 to-cyan-300 px-6 text-zinc-950 shadow-[0_0_26px_rgba(44,220,212,0.35)] transition hover:brightness-105"
+                className="h-12 rounded-full border border-cyan-300/50 bg-linear-to-r from-teal-400 to-cyan-300 px-6 text-zinc-950 shadow-[0_0_26px_rgba(44,220,212,0.35)] transition hover:brightness-105"
               >
                 Contact Me <FiArrowRight aria-hidden="true" />
               </Button>
@@ -147,7 +147,7 @@ const Hero = () => {
             variants={profileCardVariants}
             initial="hidden"
             animate="visible"
-            className="relative w-full max-w-[360px] mx-auto lg:ml-auto"
+            className="relative w-full max-w-90 mx-auto lg:ml-auto"
           >
             <motion.div
               className="absolute -inset-6 -z-10 rounded-[calc(var(--radius)+16px)] bg-[color-mix(in_srgb,var(--color-primary)_18%,transparent)] blur-2xl animate-float"
@@ -161,7 +161,7 @@ const Hero = () => {
               }}
             />
             <motion.div
-              className="glass-strong rounded-[var(--radius)] p-3.5 md:p-4 glow-border"
+              className="glass-strong rounded-(--radius) p-3.5 md:p-4 glow-border"
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
             >
@@ -174,7 +174,7 @@ const Hero = () => {
               </div>
 
               <motion.div
-                className="mt-4 relative aspect-[3/4] rounded-[calc(var(--radius)-4px)] overflow-hidden border border-border bg-[color-mix(in_srgb,var(--color-surface)_70%,transparent)]"
+                className="mt-4 relative aspect-3/4 rounded-[calc(var(--radius)-4px)] overflow-hidden border border-border bg-[color-mix(in_srgb,var(--color-surface)_70%,transparent)]"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.4, duration: 0.6 }}

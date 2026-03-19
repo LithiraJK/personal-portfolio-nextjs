@@ -144,7 +144,7 @@ export default function Skills() {
 
         <div
           data-reveal
-          className="glass-strong rounded-[var(--radius)] p-5 md:p-6 glow-border will-change-transform"
+          className="glass-strong rounded-(--radius) p-5 md:p-6 glow-border will-change-transform"
         >
           <div className="flex flex-wrap gap-2">
             {categories.map((c) => {
@@ -186,12 +186,12 @@ export default function Skills() {
                 transition={{ duration: 0.5, delay: idx * 0.08, ease: "easeOut" }}
                 exit={{ opacity: 0, y: -20 }}
                 whileHover={{ y: -6, rotateX: 2, rotateY: -2 }}
-                className="group [transform-style:preserve-3d]"
+                className="group transform-3d"
               >
-                <div className="glass rounded-[var(--radius)] p-5 border border-border glow-border animated-border transition will-change-transform">
+                <div className="glass rounded-(--radius) p-5 border border-border glow-border animated-border transition will-change-transform">
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex items-center gap-3">
-                      <div className="h-11 w-11 rounded-[var(--radius)] border border-border bg-[color-mix(in_srgb,var(--color-surface)_65%,transparent)] flex items-center justify-center text-primary shadow-[0_0_25px_color-mix(in_srgb,var(--color-primary)_22%,transparent)]">
+                      <div className="h-11 w-11 rounded-(--radius) border border-border bg-[color-mix(in_srgb,var(--color-surface)_65%,transparent)] flex items-center justify-center text-primary shadow-[0_0_25px_color-mix(in_srgb,var(--color-primary)_22%,transparent)]">
                         {getIcon(s.name)}
                       </div>
                       <div>

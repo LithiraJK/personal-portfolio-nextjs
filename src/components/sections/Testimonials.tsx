@@ -23,7 +23,7 @@ export default function Testimonials() {
           subtitle="Testimonials are placeholders — replace them with real feedback anytime."
         />
 
-        <div className="glass-strong rounded-[var(--radius)] p-6 md:p-10 glow-border">
+        <div className="glass-strong rounded-(--radius) p-6 md:p-10 glow-border">
           <div className="flex items-start justify-between gap-6">
             <div className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[color-mix(in_srgb,var(--color-primary)_18%,transparent)] border border-border text-primary">
               <FaQuoteLeft aria-hidden="true" />
@@ -32,14 +32,14 @@ export default function Testimonials() {
             <div className="ml-auto flex items-center gap-2">
               <button
                 onClick={prev}
-                className="h-10 w-10 inline-flex items-center justify-center rounded-[var(--radius)] border border-border text-muted-foreground hover:text-foreground hover:bg-[color-mix(in_srgb,var(--color-surface)_60%,transparent)] transition"
+                className="h-10 w-10 inline-flex items-center justify-center rounded-(--radius) border border-border text-muted-foreground hover:text-foreground hover:bg-[color-mix(in_srgb,var(--color-surface)_60%,transparent)] transition"
                 aria-label="Previous testimonial"
               >
                 <FiChevronLeft aria-hidden="true" />
               </button>
               <button
                 onClick={next}
-                className="h-10 w-10 inline-flex items-center justify-center rounded-[var(--radius)] border border-border text-muted-foreground hover:text-foreground hover:bg-[color-mix(in_srgb,var(--color-surface)_60%,transparent)] transition"
+                className="h-10 w-10 inline-flex items-center justify-center rounded-(--radius) border border-border text-muted-foreground hover:text-foreground hover:bg-[color-mix(in_srgb,var(--color-surface)_60%,transparent)] transition"
                 aria-label="Next testimonial"
               >
                 <FiChevronRight aria-hidden="true" />
@@ -47,7 +47,7 @@ export default function Testimonials() {
             </div>
           </div>
 
-          <div className="mt-6 min-h-[170px] md:min-h-[150px]">
+          <div className="mt-6 min-h-42.5 md:min-h-37.5">
             <AnimatePresence mode="wait">
               <motion.div
                 key={index}

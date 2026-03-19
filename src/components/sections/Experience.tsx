@@ -110,7 +110,7 @@ export default function Experience() {
                     ].join(" ")}
                   >
                     <motion.div
-                      className="glass-strong rounded-[var(--radius)] p-6 md:p-7 glow-border"
+                      className="glass-strong rounded-(--radius) p-6 md:p-7 glow-border"
                       whileHover={{ scale: 1.02, y: -4 }}
                       transition={{ duration: 0.3 }}
                     >

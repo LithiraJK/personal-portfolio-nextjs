@@ -42,7 +42,7 @@ const About = () => {
 
             <motion.div
               variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6 } } }}
-              className="mt-7 glass rounded-[var(--radius)] p-6 border border-border"
+              className="mt-7 glass rounded-(--radius) p-6 border border-border"
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
             >
@@ -70,7 +70,7 @@ const About = () => {
             <motion.div
               variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, delay: 0 } } }}
               whileHover={{ y: -8 }}
-              className="glass-strong rounded-[var(--radius)] p-6 group cursor-pointer"
+              className="glass-strong rounded-(--radius) p-6 group cursor-pointer"
             >
               <motion.div className="text-primary text-2xl" whileHover={{ scale: 1.1 }}>
                 <FaCode aria-hidden="true" />
@@ -83,7 +83,7 @@ const About = () => {
             <motion.div
               variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, delay: 0.08 } } }}
               whileHover={{ y: -8 }}
-              className="glass-strong rounded-[var(--radius)] p-6 group cursor-pointer"
+              className="glass-strong rounded-(--radius) p-6 group cursor-pointer"
             >
               <motion.div className="text-primary text-2xl" whileHover={{ scale: 1.1 }}>
                 <FaBolt aria-hidden="true" />
@@ -96,7 +96,7 @@ const About = () => {
             <motion.div
               variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, delay: 0.16 } } }}
               whileHover={{ y: -8 }}
-              className="glass-strong rounded-[var(--radius)] p-6 group cursor-pointer"
+              className="glass-strong rounded-(--radius) p-6 group cursor-pointer"
             >
               <motion.div className="text-primary text-2xl" whileHover={{ scale: 1.1 }}>
                 <FaUsers aria-hidden="true" />
@@ -109,7 +109,7 @@ const About = () => {
             <motion.div
               variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, delay: 0.24 } } }}
               whileHover={{ y: -8 }}
-              className="glass-strong rounded-[var(--radius)] p-6 group cursor-pointer"
+              className="glass-strong rounded-(--radius) p-6 group cursor-pointer"
             >
               <motion.div className="text-primary text-2xl" whileHover={{ scale: 1.1 }}>
                 <FaLightbulb aria-hidden="true" />
