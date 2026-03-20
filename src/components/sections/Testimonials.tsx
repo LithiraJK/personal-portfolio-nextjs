@@ -9,14 +9,27 @@ import { FaQuoteLeft } from "react-icons/fa";
 
 export default function Testimonials() {
   const [index, setIndex] = React.useState(0);
+  const [isPaused, setIsPaused] = React.useState(false);
   const total = testimonials.length;
   const current = testimonials[index]!;
 
   const prev = () => setIndex((i) => (i - 1 + total) % total);
   const next = () => setIndex((i) => (i + 1) % total);
 
+  React.useEffect(() => {
+    if (isPaused || total <= 1) {
+      return;
+    }
+
+    const timer = window.setInterval(() => {
+      setIndex((i) => (i + 1) % total);
+    }, 4500);
+
+    return () => window.clearInterval(timer);
+  }, [isPaused, total]);
+
   return (
-    <section id="testimonials" className="mt-16 md:mt-20">
+    <section id="testimonials" className="my-32 md:mt-20">
       <div className="mx-auto max-w-6xl px-4">
         <SectionTitle
           variant="modern"
@@ -27,7 +40,13 @@ export default function Testimonials() {
           titleClassName="text-balance"
         />
 
-        <div className="glass-strong rounded-(--radius) max-w-3xl p-6 md:p-10 glow-border">
+        <div
+          className="glass-strong rounded-(--radius) max-w-3xl p-6 md:p-10 glow-border"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          onFocusCapture={() => setIsPaused(true)}
+          onBlurCapture={() => setIsPaused(false)}
+        >
           <div className="flex items-start justify-between gap-6">
             <div className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[color-mix(in_srgb,var(--color-primary)_18%,transparent)] border border-border text-primary">
               <FaQuoteLeft aria-hidden="true" />
