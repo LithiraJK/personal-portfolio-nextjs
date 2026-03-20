@@ -136,8 +136,12 @@ export default function Skills() {
       />
       <div ref={revealRef} className="mx-auto max-w-6xl px-4">
         <SectionTitle
+          variant="modern"
+          eyebrow="Tech Stack"
           title="Skills"
+          accentPhrase="in action"
           subtitle="Interactive skill cards with quick filters."
+          titleClassName="text-balance"
         />
 
         <FloatingSkills />

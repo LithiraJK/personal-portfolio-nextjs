@@ -27,8 +27,12 @@ const Projects = () => {
     <section id="projects" className="mt-16 md:mt-20">
       <div className="mx-auto max-w-6xl px-4">
         <SectionTitle
-          title="Projects"
+          variant="modern"
+          eyebrow="Selected Work"
+          title="Featured"
+          accentPhrase="projects"
           subtitle="A few builds showcasing full-stack development, payments, and real-time features."
+          titleClassName="text-balance"
         />
 
         <motion.div

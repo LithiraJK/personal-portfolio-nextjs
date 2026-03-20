@@ -17,13 +17,17 @@ export default function Testimonials() {
 
   return (
     <section id="testimonials" className="mt-16 md:mt-20">
-      <div className="mx-auto max-w-3xl px-4">
+      <div className="mx-auto max-w-6xl px-4">
         <SectionTitle
-          title="Kind words from amazing people."
+          variant="modern"
+          eyebrow="Testimonials"
+          title="Kind words"
+          accentPhrase="from amazing people."
           subtitle="Testimonials are placeholders — replace them with real feedback anytime."
+          titleClassName="text-balance"
         />
 
-        <div className="glass-strong rounded-(--radius) p-6 md:p-10 glow-border">
+        <div className="glass-strong rounded-(--radius) max-w-3xl p-6 md:p-10 glow-border">
           <div className="flex items-start justify-between gap-6">
             <div className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[color-mix(in_srgb,var(--color-primary)_18%,transparent)] border border-border text-primary">
               <FaQuoteLeft aria-hidden="true" />

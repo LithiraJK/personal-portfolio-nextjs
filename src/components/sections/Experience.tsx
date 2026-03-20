@@ -40,8 +40,12 @@ export default function Experience() {
       />
       <div className="mx-auto max-w-6xl px-4">
         <SectionTitle
-          title="Experience that speaks volumes."
+          variant="modern"
+          eyebrow="Journey"
+          title="Experience that"
+          accentPhrase="speaks volumes."
           subtitle="Switch between Education and Experience to explore the roadmap."
+          titleClassName="text-balance"
         />
 
         <div className="mt-6 flex items-center justify-center">

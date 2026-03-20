@@ -31,8 +31,15 @@ const Contact = () => {
       />
       <div className="mx-auto max-w-6xl px-4">
         <SectionTitle
-          title="Let’s build something great."
+          variant="modern"
+          eyebrow="Get In Touch"
+          title="Let's build"
+          accentPhrase="something great."
           subtitle="Have a project in mind? Send a message and let’s discuss how we can work together."
+          className="mx-auto max-w-5xl text-center"
+          titleClassName="text-balance"
+          subtitleClassName="mx-auto"
+          dividerClassName="mx-auto"
         />
 
         <div className="grid lg:grid-cols-2 gap-6">

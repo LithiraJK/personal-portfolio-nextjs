@@ -9,7 +9,14 @@ const About = () => {
   return (
     <section id="about" className="mt-16 md:mt-20">
       <div className="mx-auto max-w-6xl px-4">
-        <SectionTitle title="About me" subtitle="A bit more about how I build." />
+        <SectionTitle
+          variant="modern"
+          eyebrow="About"
+          title="About"
+          accentPhrase="me"
+          subtitle="A bit more about how I build."
+          titleClassName="text-balance"
+        />
 
         <div className="grid lg:grid-cols-2 gap-10 items-start">
           <motion.div
@@ -47,9 +54,9 @@ const About = () => {
               transition={{ duration: 0.3 }}
             >
               <p className="text-sm text-muted-foreground">
-                "My mission is to create digital experiences that are not just
+                &ldquo;My mission is to create digital experiences that are not just
                 functional, but truly delightful — products users love and
-                developers enjoy maintaining."
+                developers enjoy maintaining.&rdquo;
               </p>
             </motion.div>
           </motion.div>
