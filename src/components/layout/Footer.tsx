@@ -12,7 +12,7 @@ const Footer = () => {
           reserved.
         </p>
 
-        <div className="flex items-center gap-4">
+        <div className="flex flex-col md:flex-row items-center gap-4">
           <a
             href={personalInfo.github}
             target="_blank"

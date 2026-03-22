@@ -63,8 +63,13 @@ const Hero = () => {
       <ParticlesField className="pointer-events-none absolute inset-0 -z-10" />
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid items-center gap-12 lg:grid-cols-[1.15fr_0.85fr]">
-          <motion.div variants={containerVariants} initial="hidden" animate="visible" className="max-w-2xl">
+        <div className="grid items-center gap-8 md:gap-10 lg:gap-12 lg:grid-cols-[1.15fr_0.85fr]">
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="order-2 max-w-2xl lg:order-1"
+          >
             <motion.div
               variants={itemVariants}
               className="inline-flex items-center gap-2 rounded-full border border-cyan-300/25 bg-zinc-900/65 px-3 py-1.5 text-xs text-zinc-300 md:backdrop-blur"
@@ -148,7 +153,7 @@ const Hero = () => {
             variants={profileCardVariants}
             initial="hidden"
             animate="visible"
-            className="relative w-full max-w-90 mx-auto lg:ml-auto"
+            className="order-1 relative w-full max-w-72 sm:max-w-80 md:max-w-86 mx-auto lg:order-2 lg:max-w-90 lg:ml-auto"
           >
             <motion.div
               className="absolute -inset-6 -z-10 rounded-[calc(var(--radius)+16px)] bg-[color-mix(in_srgb,var(--color-primary)_18%,transparent)] blur-xl md:blur-2xl md:animate-float"

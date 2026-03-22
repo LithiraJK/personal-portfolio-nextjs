@@ -79,7 +79,7 @@ const Navbar = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 rounded-(--radius) hover:bg-[color-mix(in_srgb,var(--color-surface)_60%,transparent)] transition"
+            className="md:hidden ml-auto p-2 rounded-(--radius) hover:bg-[color-mix(in_srgb,var(--color-surface)_60%,transparent)] transition"
             onClick={() => setIsOpen((v) => !v)}
             aria-expanded={isOpen}
             aria-controls="mobile-menu"
