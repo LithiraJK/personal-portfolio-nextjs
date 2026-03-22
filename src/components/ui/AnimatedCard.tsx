@@ -51,7 +51,7 @@ export default function AnimatedCard({
       >
         {/* Animated background glow */}
         <motion.div
-          className="absolute -inset-1 bg-gradient-to-r from-primary/8 via-primary/5 to-transparent rounded-[var(--radius)] opacity-0 group-hover:opacity-100 blur-lg transition-opacity duration-500 -z-10"
+          className="absolute -inset-1 bg-linear-to-r from-primary/8 via-primary/5 to-transparent rounded-(--radius) opacity-0 group-hover:opacity-100 blur-lg transition-opacity duration-500 -z-10"
           animate={{
             boxShadow:
               "0 0 20px rgba(var(--color-primary-rgb), 0.15), 0 0 30px rgba(var(--color-primary-rgb), 0.08)",
@@ -69,13 +69,13 @@ export default function AnimatedCard({
 
         {/* Shimmer overlay on hover */}
         <motion.div
-          className="absolute inset-0 rounded-[var(--radius)] overflow-hidden opacity-0 group-hover:opacity-100 pointer-events-none"
+          className="absolute inset-0 rounded-(--radius) overflow-hidden opacity-0 group-hover:opacity-100 pointer-events-none"
           initial={{ opacity: 0 }}
           whileHover={{ opacity: 1 }}
           transition={{ duration: 0.3 }}
         >
           <motion.div
-            className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent"
+            className="absolute inset-0 bg-linear-to-r from-transparent via-white to-transparent"
             initial={{ x: "-100%" }}
             animate={{ x: "100%" }}
             transition={{

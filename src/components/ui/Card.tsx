@@ -59,7 +59,7 @@ export default function Card({
   return (
     <article
       className={cn(
-        "group glass-strong rounded-[var(--radius)] overflow-hidden glow-border animated-border transition",
+        "group glass-strong rounded-(--radius) overflow-hidden glow-border animated-border transition",
         className,
       )}
     >
@@ -74,7 +74,7 @@ export default function Card({
             priority={false}
           />
         ) : null}
-        <div className="absolute inset-0 bg-gradient-to-t from-[color-mix(in_srgb,var(--color-background)_70%,transparent)] via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-t from-[color-mix(in_srgb,var(--color-background)_70%,transparent)] via-transparent to-transparent" />
       </div>
 
       <div className="p-6">
