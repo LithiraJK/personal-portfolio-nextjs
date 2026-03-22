@@ -212,7 +212,7 @@ export default function Skills() {
 
                   <div className="mt-4 h-2 rounded-full bg-[color-mix(in_srgb,var(--color-surface)_70%,transparent)] border border-border overflow-hidden">
                     <motion.div
-                      className="h-full rounded-full bg-[color-mix(in_srgb,var(--color-primary)_70%,transparent)]"
+                      className="h-full rounded-full bg-linear-to-r from-teal-400 via-cyan-300 to-emerald-300"
                       initial={{ width: 0 }}
                       whileInView={{ width: `${s.pct}%` }}
                       transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}

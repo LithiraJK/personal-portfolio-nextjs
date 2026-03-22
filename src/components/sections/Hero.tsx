@@ -76,14 +76,14 @@ const Hero = () => {
               variants={itemVariants}
               className="mt-6 text-4xl font-semibold leading-[1.02] tracking-tight text-zinc-100 sm:text-5xl md:text-6xl"
             >
-              Crafting{" "}
+              Innovative{" "}
               <span className="bg-linear-to-r from-emerald-300 via-cyan-300 to-teal-400 bg-clip-text text-transparent">
-                digital
+                Explorer
               </span>
               <br />
-              experiences with
+              Crafting Intelligent
               <br />
-              <span className="font-serif italic text-zinc-50">precision.</span>
+              <span className="font-serif italic text-zinc-50"> Solutions.</span>
             </motion.h1>
 
             <motion.p
@@ -167,7 +167,7 @@ const Hero = () => {
             >
               <div className="flex items-start justify-between">
                 <div className="text-xs text-muted-foreground">
-                  <span className="text-primary font-medium">2023</span>{" "}
+                  <span className="text-primary font-medium">2024</span>{" "}
                   <span className="mx-1">—</span> Present
                   <div className="mt-1">Learning &amp; building</div>
                 </div>
