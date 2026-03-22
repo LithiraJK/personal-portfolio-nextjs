@@ -82,27 +82,53 @@ export const projects = [
     links: {
       source: "https://github.com/LithiraJK/habitflux",
     },
-    image: "/images/habitflux.svg",
+    image: "/images/habitflux-habit-tracking-app.png",
   },
   {
-    title: "GourmetGuru - Food Ordering and Delivery System",
+    title: "Crystal Sandes Hotel - Responsive Web Design",
     description:
-      "Developed a cross-platform habit tracking mobile application for Android and iOS. Implemented Firebase Authentication with Google Sign-In, built Firestore-based real-time data synchronization, and used Zustand for scalable state management. Generated production-ready APK builds using EAS.",
-    tech: ["React Native", "Firebase", "Firestore", "Zustand", "EAS"],
+      "Developed a responsive web design for Crystal Sandes Hotel, ensuring a seamless user experience across all devices. Implemented modern UI/UX principles and optimized the site for performance and accessibility.",
+    tech: ["HTML", "CSS", "JavaScript", "Bootstrap"],
     links: {
       source: "https://github.com/LithiraJK/habitflux",
     },
-    image: "/images/habitflux.svg",
-  },{
-    title: "CelonXploer - Travel Blog Site",
+    image: "/images/crystal-sands-hotel-web-site.png",
+  },
+  {
+    title: "CeylonXplorer - Sri Lanka Travel Blog",
     description:
-      "Designed and developed a full-stack freelance marketplace tailored for Sri Lanka. Built RESTful APIs and containerized backend services using Docker. Implemented secure authentication using JWT and Google OAuth, integrated the PayHere payment gateway for subscription management, and developed real-time chat functionality using WebSocket.",
-    tech: ["Spring Boot", "Hibernate", "Docker", "JWT", "WebSocket", "PayHere"],
+      "Built a responsive, mobile-first travel blog website focused on Sri Lanka using HTML5, Vanilla CSS3, and JavaScript. Showcases top destinations, practical travel tips, local culture and traditions, adventure activities, and nature and wildlife highlights. The project was deployed on Firebase Hosting and strengthened hands-on skills in clean web design, responsive layouts, and frontend best practices.",
+    tech: [
+      "HTML5",
+      "Vanilla CSS3",
+      "JavaScript",
+      "Responsive Design",
+      "Mobile-First",
+      "Firebase Hosting",
+    ],
     links: {
-      frontend: "https://github.com/LithiraJK/skillworker-frontend",
-      backend: "https://github.com/LithiraJK/skillworker-backend",
+      source: "https://github.com/LithiraJK/ceylonxplorer-htmlcss",
+      live: "https://ceylonxplorer-dabb5.web.app/",
     },
-    image: "/images/skillworker.png",
+    image: "/images/ceylonXplorer.png",
+  },
+  {
+    title: "Tic Tac Toe - JavaFX AI Game",
+    description:
+      "Built a modern Tic Tac Toe desktop game using JavaFX 21 and JFoenix with a clean material-style UI. Implemented Human vs AI gameplay with two difficulty levels: Easy mode with random moves and Hard mode powered by Minimax + Backtracking for unbeatable decisions. Structured the application with MVC architecture (Model, FXML/CSS View, Controller), added JUnit 5 tests, and packaged a Windows .exe with bundled JRE for plug-and-play installation.",
+    tech: [
+      "Java 21",
+      "JavaFX 21",
+      "JFoenix",
+      "Minimax",
+      "Backtracking",
+      "Windows .exe",
+    ],
+    links: {
+      source: "https://github.com/LithiraJK/tic-tac-toe-javafx-minimax",
+      live: "https://drive.google.com/file/d/12DvnAJklWPJ-U1t4SMqWraH_JShtMsIf/view",
+    },
+    image: "/images/tic-tac-toe.png",
   },
 ];
 
