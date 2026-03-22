@@ -1,15 +1,18 @@
 "use client";
 
 import * as React from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import SectionTitle from "@/components/ui/SectionTitle";
 import { testimonials } from "@/lib/constants";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { FaQuoteLeft } from "react-icons/fa";
 
 export default function Testimonials() {
+  const sectionRef = React.useRef<HTMLElement | null>(null);
   const [index, setIndex] = React.useState(0);
   const [isPaused, setIsPaused] = React.useState(false);
+  const [isInView, setIsInView] = React.useState(true);
+  const shouldReduceMotion = useReducedMotion();
   const total = testimonials.length;
   const current = testimonials[index]!;
 
@@ -17,7 +20,25 @@ export default function Testimonials() {
   const next = () => setIndex((i) => (i + 1) % total);
 
   React.useEffect(() => {
-    if (isPaused || total <= 1) {
+    const el = sectionRef.current;
+    if (!el || typeof IntersectionObserver === "undefined") {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+      },
+      { threshold: 0.3 },
+    );
+
+    observer.observe(el);
+
+    return () => observer.disconnect();
+  }, []);
+
+  React.useEffect(() => {
+    if (isPaused || total <= 1 || shouldReduceMotion || !isInView) {
       return;
     }
 
@@ -26,10 +47,10 @@ export default function Testimonials() {
     }, 4500);
 
     return () => window.clearInterval(timer);
-  }, [isPaused, total]);
+  }, [isInView, isPaused, shouldReduceMotion, total]);
 
   return (
-    <section id="testimonials" className="my-32 md:mt-20">
+    <section ref={sectionRef} id="testimonials" className="my-32 md:mt-20">
       <div className="mx-auto max-w-6xl px-4">
         <SectionTitle
           variant="modern"
@@ -74,9 +95,9 @@ export default function Testimonials() {
             <AnimatePresence mode="wait">
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 10, filter: "blur(8px)" }}
-                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                exit={{ opacity: 0, y: -10, filter: "blur(8px)" }}
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
                 transition={{ duration: 0.35, ease: "easeOut" }}
               >
                 <p className="text-lg md:text-xl leading-relaxed text-foreground/90">

@@ -14,8 +14,34 @@ type Particle = {
 export default function BackgroundEffects() {
   const canvasRef = React.useRef<HTMLCanvasElement | null>(null);
   const particlesRef = React.useRef<Particle[]>([]);
+  const [isMobile, setIsMobile] = React.useState(false);
+  const [reduceMotion, setReduceMotion] = React.useState(false);
 
   React.useEffect(() => {
+    const mobileQuery = window.matchMedia("(max-width: 768px)");
+    const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    const sync = () => {
+      setIsMobile(mobileQuery.matches);
+      setReduceMotion(motionQuery.matches);
+    };
+
+    sync();
+
+    mobileQuery.addEventListener("change", sync);
+    motionQuery.addEventListener("change", sync);
+
+    return () => {
+      mobileQuery.removeEventListener("change", sync);
+      motionQuery.removeEventListener("change", sync);
+    };
+  }, []);
+
+  React.useEffect(() => {
+    if (isMobile || reduceMotion) {
+      return;
+    }
+
     const canvas = canvasRef.current;
     if (!canvas) return;
 
@@ -33,7 +59,7 @@ export default function BackgroundEffects() {
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
       // Re-seed particles on resize (keeps distribution even)
-      const count = Math.round(Math.min(180, Math.max(80, (w * h) / 22000)));
+      const count = Math.round(Math.min(120, Math.max(60, (w * h) / 30000)));
       particlesRef.current = Array.from({ length: count }).map(() => ({
         x: Math.random() * w,
         y: Math.random() * h,
@@ -48,7 +74,16 @@ export default function BackgroundEffects() {
     window.addEventListener("resize", resize, { passive: true });
 
     let raf = 0;
-    const loop = () => {
+    let last = 0;
+    const frameInterval = 1000 / 30;
+
+    const loop = (time: number) => {
+      if (time - last < frameInterval || document.hidden) {
+        raf = window.requestAnimationFrame(loop);
+        return;
+      }
+      last = time;
+
       const w = canvas.clientWidth;
       const h = canvas.clientHeight;
 
@@ -79,16 +114,18 @@ export default function BackgroundEffects() {
       window.removeEventListener("resize", resize);
       window.cancelAnimationFrame(raf);
     };
-  }, []);
+  }, [isMobile, reduceMotion]);
 
   return (
     <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
       {/* Particles */}
-      <canvas ref={canvasRef} className="absolute inset-0 opacity-40" />
+      {!isMobile && !reduceMotion && (
+        <canvas ref={canvasRef} className="absolute inset-0 opacity-25 md:opacity-40" />
+      )}
 
       {/* Rings / Orbits (SVG) */}
       <svg
-        className="absolute inset-0 opacity-35"
+        className="absolute inset-0 opacity-20 md:opacity-35"
         viewBox="0 0 1200 800"
         preserveAspectRatio="xMidYMid slice"
         aria-hidden="true"

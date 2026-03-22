@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import type { Variants } from "framer-motion";
 import { personalInfo } from "@/lib/constants";
 import Button from "@/components/ui/Button";
@@ -12,6 +12,7 @@ import { FiDownload, FiArrowRight, FiChevronDown } from "react-icons/fi";
 
 const Hero = () => {
   const { scrollTo } = useScrollAnimation();
+  const shouldReduceMotion = useReducedMotion();
   const shortSummary =
     personalInfo.profileSummary.split(". ").slice(0, 2).join(". ") + ".";
 
@@ -55,9 +56,9 @@ const Hero = () => {
     <section id="home" className="relative isolate overflow-hidden pt-28 md:pt-32 lg:pt-36">
       <div className="pointer-events-none absolute inset-0 -z-20 bg-zinc-950" />
       <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(90%_65%_at_50%_52%,rgba(3,180,168,0.18)_0%,rgba(2,20,26,0.75)_48%,rgba(3,6,12,0.98)_100%)]" />
-      <div className="pointer-events-none absolute left-1/2 top-[52%] -z-10 h-75 w-[82vw] max-w-5xl -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(28,201,190,0.2)_0%,rgba(28,201,190,0.08)_35%,rgba(28,201,190,0)_72%)] blur-2xl" />
+      <div className="pointer-events-none absolute left-1/2 top-[52%] -z-10 h-75 w-[82vw] max-w-5xl -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(28,201,190,0.2)_0%,rgba(28,201,190,0.08)_35%,rgba(28,201,190,0)_72%)] blur-lg md:blur-2xl" />
       <div className="pointer-events-none absolute left-0 right-0 top-1/2 -z-10 h-px bg-[linear-gradient(90deg,rgba(0,0,0,0)_0%,rgba(49,231,221,0.45)_50%,rgba(0,0,0,0)_100%)] opacity-65 blur-[1px]" />
-      <div className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-8 w-[90vw] max-w-6xl -translate-x-1/2 -translate-y-1/2 bg-[radial-gradient(closest-side,rgba(35,220,210,0.2),rgba(35,220,210,0))] blur-xl" />
+      <div className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-8 w-[90vw] max-w-6xl -translate-x-1/2 -translate-y-1/2 bg-[radial-gradient(closest-side,rgba(35,220,210,0.2),rgba(35,220,210,0))] blur-md md:blur-xl" />
 
       <ParticlesField className="pointer-events-none absolute inset-0 -z-10" />
 
@@ -66,7 +67,7 @@ const Hero = () => {
           <motion.div variants={containerVariants} initial="hidden" animate="visible" className="max-w-2xl">
             <motion.div
               variants={itemVariants}
-              className="inline-flex items-center gap-2 rounded-full border border-cyan-300/25 bg-zinc-900/65 px-3 py-1.5 text-xs text-zinc-300 backdrop-blur"
+              className="inline-flex items-center gap-2 rounded-full border border-cyan-300/25 bg-zinc-900/65 px-3 py-1.5 text-xs text-zinc-300 md:backdrop-blur"
             >
               <span className="h-2 w-2 rounded-full bg-cyan-300 shadow-[0_0_14px_rgba(52,221,213,0.85)]" />
               {personalInfo.title}
@@ -150,15 +151,23 @@ const Hero = () => {
             className="relative w-full max-w-90 mx-auto lg:ml-auto"
           >
             <motion.div
-              className="absolute -inset-6 -z-10 rounded-[calc(var(--radius)+16px)] bg-[color-mix(in_srgb,var(--color-primary)_18%,transparent)] blur-2xl animate-float"
-              animate={{
-                opacity: [0.5, 1, 0.5],
-              }}
-              transition={{
-                duration: 3,
-                ease: "easeInOut",
-                repeat: Infinity,
-              }}
+              className="absolute -inset-6 -z-10 rounded-[calc(var(--radius)+16px)] bg-[color-mix(in_srgb,var(--color-primary)_18%,transparent)] blur-xl md:blur-2xl md:animate-float"
+              animate={
+                shouldReduceMotion
+                  ? { opacity: 0.7 }
+                  : {
+                      opacity: [0.5, 1, 0.5],
+                    }
+              }
+              transition={
+                shouldReduceMotion
+                  ? { duration: 0 }
+                  : {
+                      duration: 3,
+                      ease: "easeInOut",
+                      repeat: Infinity,
+                    }
+              }
             />
             <motion.div
               className="glass-strong rounded-(--radius) p-3.5 md:p-4 glow-border"
@@ -206,20 +215,30 @@ const Hero = () => {
 
         <motion.div
           className="mt-16 text-center text-xs text-muted-foreground"
-          animate={{
-            y: [0, 8, 0],
-          }}
-          transition={{
-            duration: 2,
-            ease: "easeInOut",
-            repeat: Infinity,
-          }}
+          animate={shouldReduceMotion ? { y: 0 } : { y: [0, 8, 0] }}
+          transition={
+            shouldReduceMotion
+              ? { duration: 0 }
+              : {
+                  duration: 2,
+                  ease: "easeInOut",
+                  repeat: Infinity,
+                }
+          }
         >
           <div className="uppercase tracking-[0.25em]">Scroll</div>
           <motion.div
             className="mt-2 flex justify-center text-primary"
-            animate={{ y: [0, 7, 0], opacity: [0.55, 1, 0.55] }}
-            transition={{ duration: 1.5, ease: "easeInOut", repeat: Infinity }}
+            animate={
+              shouldReduceMotion
+                ? { y: 0, opacity: 0.85 }
+                : { y: [0, 7, 0], opacity: [0.55, 1, 0.55] }
+            }
+            transition={
+              shouldReduceMotion
+                ? { duration: 0 }
+                : { duration: 1.5, ease: "easeInOut", repeat: Infinity }
+            }
             aria-hidden="true"
           >
             <FiChevronDown className="text-base" />

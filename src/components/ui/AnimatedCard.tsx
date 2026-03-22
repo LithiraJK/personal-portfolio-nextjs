@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import type { Variants } from "framer-motion";
 import Card, { CardProps } from "@/components/ui/Card";
 
 interface AnimatedCardProps extends CardProps {
@@ -11,7 +12,9 @@ export default function AnimatedCard({
   index = 0,
   ...cardProps
 }: AnimatedCardProps) {
-  const containerVariants = {
+  const easing: [number, number, number, number] = [0.23, 1, 0.32, 1];
+
+  const containerVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
@@ -19,12 +22,12 @@ export default function AnimatedCard({
       transition: {
         duration: 0.6,
         delay: index * 0.12,
-        ease: [0.23, 1, 0.32, 1],
+        ease: easing,
       },
     },
   };
 
-  const hoverVariants = {
+  const hoverVariants: Variants = {
     hover: {
       y: -12,
       boxShadow:

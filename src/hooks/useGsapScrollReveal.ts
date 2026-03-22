@@ -32,11 +32,10 @@ export default function useGsapScrollReveal<T extends HTMLElement>(options?: {
     const ctx = gsap.context(() => {
       gsap.fromTo(
         targets,
-        { opacity: 0, y, filter: "blur(10px)" },
+        { opacity: 0, y },
         {
           opacity: 1,
           y: 0,
-          filter: "blur(0px)",
           duration,
           ease: "power2.out",
           stagger: selector ? stagger : undefined,

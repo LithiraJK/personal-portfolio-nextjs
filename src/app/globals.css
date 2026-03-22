@@ -200,4 +200,22 @@
         color-mix(in srgb, var(--color-primary) 35%, transparent),
       0 0 80px color-mix(in srgb, var(--color-primary) 25%, transparent);
   }
+
+  @media (max-width: 768px) {
+    .glass {
+      backdrop-filter: blur(8px);
+    }
+
+    .glass-strong {
+      backdrop-filter: blur(10px);
+    }
+
+    .glow-border {
+      box-shadow: 0 0 10px color-mix(in srgb, var(--color-primary) 14%, transparent);
+    }
+
+    .animate-float {
+      animation: none;
+    }
+  }
 }

@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import * as React from "react";
+import { motion, useReducedMotion } from "framer-motion";
 
 export type ParticlePoint = {
   top: string;
@@ -67,14 +68,34 @@ export default function ParticlesField({
   className,
   particleClassName,
 }: ParticlesFieldProps) {
+  const [isMobile, setIsMobile] = React.useState(false);
+  const shouldReduceMotion = useReducedMotion();
+
+  React.useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 768px)");
+
+    const sync = () => setIsMobile(mediaQuery.matches);
+    sync();
+
+    mediaQuery.addEventListener("change", sync);
+    return () => mediaQuery.removeEventListener("change", sync);
+  }, []);
+
   const wrapperClassName = className ?? "pointer-events-none absolute inset-0 -z-10";
   const dotClassName =
     particleClassName ??
     "pointer-events-none absolute rounded-full bg-cyan-200 shadow-[0_0_10px_rgba(103,232,249,0.9)]";
+  const shownParticles = React.useMemo(() => {
+    if (isMobile) {
+      return particles.filter((_, idx) => idx % 2 === 0).slice(0, 20);
+    }
+
+    return particles;
+  }, [isMobile, particles]);
 
   return (
     <div className={wrapperClassName} aria-hidden="true">
-      {particles.map((particle, idx) => (
+      {shownParticles.map((particle, idx) => (
         <motion.span
           key={`${particle.left}-${particle.top}-${idx}`}
           className={dotClassName}
@@ -83,18 +104,27 @@ export default function ParticlesField({
             height: `${particle.size}px`,
             top: particle.top,
             left: particle.left,
+            willChange: shouldReduceMotion ? "auto" : "transform, opacity",
           }}
-          animate={{
-            opacity: [0.35, 1, 0.35],
-            scale: [0.95, 1.45, 0.95],
-            y: [0, -6, 0],
-          }}
-          transition={{
-            duration: particle.duration,
-            repeat: Infinity,
-            delay: particle.delay,
-            ease: "easeInOut",
-          }}
+          animate={
+            shouldReduceMotion
+              ? { opacity: 0.6 }
+              : {
+                  opacity: [0.35, 1, 0.35],
+                  scale: [0.95, isMobile ? 1.2 : 1.45, 0.95],
+                  y: [0, isMobile ? -3 : -6, 0],
+                }
+          }
+          transition={
+            shouldReduceMotion
+              ? { duration: 0 }
+              : {
+                  duration: isMobile ? particle.duration * 1.2 : particle.duration,
+                  repeat: Infinity,
+                  delay: particle.delay,
+                  ease: "easeInOut",
+                }
+          }
         />
       ))}
     </div>

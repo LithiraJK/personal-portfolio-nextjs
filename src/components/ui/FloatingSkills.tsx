@@ -190,7 +190,15 @@ const floatingSkills: FloatingSkill[] = baseFloatingSkills.map((skill, index, al
   velocity: createVelocity(index),
 }));
 
-const FloatingSkillBubble = ({ skill, bounds }: { skill: FloatingSkill; bounds: Bounds }) => {
+const FloatingSkillBubble = ({
+  skill,
+  bounds,
+  isActive,
+}: {
+  skill: FloatingSkill;
+  bounds: Bounds;
+  isActive: boolean;
+}) => {
   const [isHovered, setIsHovered] = React.useState(false);
   const shouldReduceMotion = useReducedMotion();
   const x = useMotionValue(skill.initial.x);
@@ -208,7 +216,7 @@ const FloatingSkillBubble = ({ skill, bounds }: { skill: FloatingSkill; bounds: 
   }, [skill.initial.x, skill.initial.y, skill.velocity, x, y]);
 
   React.useEffect(() => {
-    if (isHovered || shouldReduceMotion) {
+    if (isHovered || shouldReduceMotion || !isActive) {
       if (frameRef.current !== null) {
         cancelAnimationFrame(frameRef.current);
       }
@@ -264,7 +272,7 @@ const FloatingSkillBubble = ({ skill, bounds }: { skill: FloatingSkill; bounds: 
       frameRef.current = null;
       lastTimeRef.current = null;
     };
-  }, [bounds.x, bounds.y, isHovered, shouldReduceMotion, x, y]);
+  }, [bounds.x, bounds.y, bubbleRadius, isActive, isHovered, shouldReduceMotion, x, y]);
 
   return (
     <motion.div
@@ -300,7 +308,7 @@ const FloatingSkillBubble = ({ skill, bounds }: { skill: FloatingSkill; bounds: 
         {/* Animated background glow on hover */}
         {isHovered && (
           <motion.div
-            className="absolute inset-0 rounded-full bg-gradient-to-r from-primary/30 via-primary/20 to-transparent"
+            className="absolute inset-0 rounded-full bg-linear-to-r from-primary/30 via-primary/20 to-transparent"
             animate={{
               boxShadow: [
                 "0 0 30px rgba(var(--color-primary-rgb), 0.5)",
@@ -338,6 +346,44 @@ const FloatingSkillBubble = ({ skill, bounds }: { skill: FloatingSkill; bounds: 
 export default function FloatingSkills() {
   const containerRef = React.useRef<HTMLDivElement | null>(null);
   const [bounds, setBounds] = React.useState<Bounds>({ x: 300, y: 190 });
+  const [isMobile, setIsMobile] = React.useState(false);
+  const [isActive, setIsActive] = React.useState(true);
+  const shouldReduceMotion = useReducedMotion();
+
+  const visibleSkills = React.useMemo(() => {
+    if (isMobile) {
+      return floatingSkills.filter((_, idx) => idx % 2 === 0).slice(0, 12);
+    }
+
+    return floatingSkills;
+  }, [isMobile]);
+
+  React.useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 768px)");
+    const sync = () => setIsMobile(mediaQuery.matches);
+    sync();
+
+    mediaQuery.addEventListener("change", sync);
+    return () => mediaQuery.removeEventListener("change", sync);
+  }, []);
+
+  React.useEffect(() => {
+    if (!containerRef.current || typeof IntersectionObserver === "undefined") {
+      return;
+    }
+
+    const element = containerRef.current;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsActive(entry.isIntersecting);
+      },
+      { threshold: 0.2 },
+    );
+
+    observer.observe(element);
+
+    return () => observer.disconnect();
+  }, []);
 
   React.useEffect(() => {
     if (!containerRef.current) {
@@ -369,23 +415,28 @@ export default function FloatingSkills() {
 
   return (
     <motion.div
-      className="relative h-96 md:h-[500px] w-full mb-12 rounded-xl border border-primary/20 bg-[color-mix(in_srgb,var(--color-primary)_5%,transparent)] overflow-hidden"
+      className="relative h-96 md:h-125 w-full mb-12 rounded-xl border border-primary/20 bg-[color-mix(in_srgb,var(--color-primary)_5%,transparent)] overflow-hidden"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 0.6 }}
       viewport={{ once: true, margin: "-50px" }}
     >
       {/* Background grid effect */}
-      <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_24%,rgba(var(--color-primary-rgb),.05)_25%,rgba(var(--color-primary-rgb),.05)_26%,transparent_27%,transparent_74%,rgba(var(--color-primary-rgb),.05)_75%,rgba(var(--color-primary-rgb),.05)_76%,transparent_77%,transparent)] bg-[length:40px_40px] opacity-40" />
+      <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_24%,rgba(var(--color-primary-rgb),.05)_25%,rgba(var(--color-primary-rgb),.05)_26%,transparent_27%,transparent_74%,rgba(var(--color-primary-rgb),.05)_75%,rgba(var(--color-primary-rgb),.05)_76%,transparent_77%,transparent)] bg-size-[40px_40px] opacity-40" />
 
       {/* Subtle gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[color-mix(in_srgb,var(--color-background)_0%,transparent)]" />
+      <div className="absolute inset-0 bg-linear-to-b from-transparent via-transparent to-[color-mix(in_srgb,var(--color-background)_0%,transparent)]" />
 
       {/* Floating skills container */}
       <div ref={containerRef} className="absolute inset-0 flex items-center justify-center">
         <div className="relative w-full h-full">
-          {floatingSkills.map((skill) => (
-            <FloatingSkillBubble key={skill.name} skill={skill} bounds={bounds} />
+          {visibleSkills.map((skill) => (
+            <FloatingSkillBubble
+              key={skill.name}
+              skill={skill}
+              bounds={bounds}
+              isActive={isActive}
+            />
           ))}
         </div>
       </div>
@@ -393,18 +444,26 @@ export default function FloatingSkills() {
       {/* Center highlight */}
       <motion.div
         className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-1 h-1 rounded-full bg-primary/30"
-        animate={{
-          boxShadow: [
-            "0 0 0px rgba(var(--color-primary-rgb), 0.3)",
-            "0 0 40px rgba(var(--color-primary-rgb), 0.1)",
-            "0 0 0px rgba(var(--color-primary-rgb), 0.3)",
-          ],
-        }}
-        transition={{
-          duration: 3,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
+        animate={
+          isActive && !shouldReduceMotion
+            ? {
+                boxShadow: [
+                  "0 0 0px rgba(var(--color-primary-rgb), 0.3)",
+                  "0 0 40px rgba(var(--color-primary-rgb), 0.1)",
+                  "0 0 0px rgba(var(--color-primary-rgb), 0.3)",
+                ],
+              }
+            : { boxShadow: "0 0 0px rgba(var(--color-primary-rgb), 0.2)" }
+        }
+        transition={
+          isActive && !shouldReduceMotion
+            ? {
+                duration: 3,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }
+            : { duration: 0 }
+        }
       />
     </motion.div>
   );
