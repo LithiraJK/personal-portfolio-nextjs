@@ -9,7 +9,7 @@ import Contact from "@/components/sections/Contact";
 import FadeIn from "@/components/animations/FadeIn";
 
 export const metadata: Metadata = {
-  title: "Home",
+  title: "Lithira Jayanaka",
   description:
     "Discover the portfolio of Lithira Jayanaka, a Full-Stack Developer building performant, user-focused applications with MERN, Spring Boot, and React Native.",
   alternates: {

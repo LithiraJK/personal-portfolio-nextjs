@@ -136,6 +136,30 @@
     }
   }
 
+  @keyframes skeleton-shimmer {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  @keyframes loader-progress {
+    0% {
+      transform: scaleX(0.2);
+      opacity: 0.6;
+    }
+    50% {
+      transform: scaleX(0.85);
+      opacity: 1;
+    }
+    100% {
+      transform: scaleX(0.35);
+      opacity: 0.8;
+    }
+  }
+
   .animate-fade-in {
     animation: fade-in 0.8s ease-out both;
   }
@@ -146,6 +170,32 @@
 
   .animate-marquee {
     animation: marquee 30s linear infinite;
+  }
+
+  .skeleton {
+    position: relative;
+    overflow: hidden;
+    background-color: color-mix(in srgb, var(--color-surface) 75%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-border) 65%, transparent);
+  }
+
+  .skeleton::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      100deg,
+      transparent 20%,
+      color-mix(in srgb, var(--color-primary) 22%, transparent) 50%,
+      transparent 80%
+    );
+    transform: translateX(-100%);
+    animation: skeleton-shimmer 1.7s ease-in-out infinite;
+  }
+
+  .loader-progress {
+    transform-origin: left;
+    animation: loader-progress 1.6s cubic-bezier(0.23, 1, 0.32, 1) infinite;
   }
 
   .animation-delay-100 {
@@ -216,6 +266,18 @@
 
     .animate-float {
       animation: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .skeleton::after {
+      animation: none;
+      opacity: 0;
+    }
+
+    .loader-progress {
+      animation: none;
+      transform: scaleX(0.6);
     }
   }
 }
