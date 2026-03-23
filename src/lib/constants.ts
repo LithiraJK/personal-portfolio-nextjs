@@ -135,7 +135,7 @@ export const projects = [
 // Education
 export const education = [
   {
-    institution: "IUSE (Institute of Software Engineering)",
+    institution: "IJSE (Institute of Software Engineering)",
     degree: "Graduate Diploma in Software Engineering (GDSE)",
     period: "2023 - Present",
   },
@@ -149,7 +149,7 @@ export const education = [
 // Leadership Activities
 export const leadership = [
   {
-    role: "Coordinator & Member - IUSE Student Committee",
+    role: "Coordinator & Member - IJSE Student Committee",
     period: "2023 - Present",
     description:
       "Coordinated student activities and events. Managed communication between students and academic staff.",

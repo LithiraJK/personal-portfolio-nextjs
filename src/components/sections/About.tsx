@@ -49,18 +49,21 @@ const About = () => {
 
             <motion.div
               variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6 } } }}
-              className="mt-7 glass rounded-(--radius) p-6 border border-border"
-              whileHover={{ scale: 1.02 }}
+              className="mt-7 glass rounded-(--radius) border border-border p-5 md:p-6"
+              whileHover={{ scale: 1.01 }}
               transition={{ duration: 0.3 }}
             >
-              <div className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[color-mix(in_srgb,var(--color-primary)_18%,transparent)] border border-border text-primary">
-                <FaQuoteLeft aria-hidden="true" />
+              <div className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border bg-[color-mix(in_srgb,var(--color-primary)_14%,transparent)] text-primary/90">
+                <FaQuoteLeft aria-hidden="true" className="text-sm" />
               </div>
-              <p className="mt-4 text-sm text-muted-foreground">
+
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                 My mission is to create digital experiences that are not just
-                functional, but truly delightful — products users love and
+                functional, but truly delightful - products users love and
                 developers enjoy maintaining.
               </p>
+
+              <div className="mt-3 h-px w-14 bg-[color-mix(in_srgb,var(--color-primary)_38%,transparent)]" />
             </motion.div>
           </motion.div>
 
@@ -134,6 +137,6 @@ const About = () => {
       </div>
     </section>
   );
-}
+};
 
-export default About
+export default About;
