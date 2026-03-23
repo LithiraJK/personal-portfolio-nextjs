@@ -25,7 +25,7 @@ export default function Experience() {
   }));
 
   const experienceEntries: TimelineEntry[] = leadership.map((l) => ({
-    period: "Experience",
+    period: l.period,
     title: l.role,
     description: l.description,
   }));
@@ -84,6 +84,7 @@ export default function Experience() {
         </div>
 
         <div className="relative mt-10">
+          <div className="md:hidden absolute left-3 top-0 bottom-0 w-px bg-border" />
           <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-border" />
 
           <motion.div
@@ -98,7 +99,7 @@ export default function Experience() {
               return (
                 <motion.div
                   key={`${item.title}-${idx}`}
-                  className="relative md:grid md:grid-cols-2 md:gap-10 items-center"
+                  className="relative pl-8 md:pl-0 md:grid md:grid-cols-2 md:gap-10 items-center"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{
@@ -140,6 +141,24 @@ export default function Experience() {
                         </p>
                       ) : null}
                     </motion.div>
+                  </div>
+
+                  <div className="md:hidden absolute left-3 -translate-x-1/2 top-1/2 -translate-y-1/2">
+                    <motion.div
+                      className="h-3 w-3 rounded-full bg-primary shadow-[0_0_28px_color-mix(in_srgb,var(--color-primary)_55%,transparent)]"
+                      animate={{
+                        boxShadow: [
+                          "0 0 20px rgba(var(--color-primary-rgb), 0.4)",
+                          "0 0 40px rgba(var(--color-primary-rgb), 0.2)",
+                          "0 0 20px rgba(var(--color-primary-rgb), 0.4)",
+                        ],
+                      }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                      }}
+                    />
                   </div>
 
                   <div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2">
