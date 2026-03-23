@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import BackgroundEffects from "@/components/effects/BackgroundEffects";
@@ -112,6 +113,7 @@ export default function RootLayout({
           <main className="min-h-screen overflow-hidden">{children}</main>
           <Footer />
         </div>
+        <Analytics />
       </body>
     </html>
   );
