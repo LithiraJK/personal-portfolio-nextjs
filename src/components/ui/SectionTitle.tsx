@@ -60,7 +60,7 @@ export default function SectionTitle({
       <div
         className={cn(
           isModern
-            ? "mt-5 h-px w-32 bg-gradient-to-r from-[color-mix(in_srgb,var(--color-primary)_85%,white)] to-transparent"
+            ? "mt-5 h-px w-32 bg-linear-to-r from-[color-mix(in_srgb,var(--color-primary)_85%,white)] to-transparent"
             : "mt-3 h-px w-24 bg-[color-mix(in_srgb,var(--color-primary)_65%,transparent)] glow-border",
           dividerClassName,
         )}
