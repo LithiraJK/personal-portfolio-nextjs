@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import SectionTitle from "@/components/ui/SectionTitle";
 import { personalInfo } from "@/lib/constants";
-import { FaCode, FaBolt, FaUsers, FaLightbulb } from "react-icons/fa";
+import { FaCode, FaBolt, FaUsers, FaLightbulb, FaQuoteLeft } from "react-icons/fa";
 
 const About = () => {
   return (
@@ -53,10 +53,13 @@ const About = () => {
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
             >
-              <p className="text-sm text-muted-foreground">
-                &ldquo;My mission is to create digital experiences that are not just
+              <div className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[color-mix(in_srgb,var(--color-primary)_18%,transparent)] border border-border text-primary">
+                <FaQuoteLeft aria-hidden="true" />
+              </div>
+              <p className="mt-4 text-sm text-muted-foreground">
+                My mission is to create digital experiences that are not just
                 functional, but truly delightful — products users love and
-                developers enjoy maintaining.&rdquo;
+                developers enjoy maintaining.
               </p>
             </motion.div>
           </motion.div>

@@ -9,7 +9,7 @@ export const personalInfo = {
   github: "https://github.com/LithiraJK",
   availability: "Available for work",
   profileSummary:
-    "Full-Stack Developer and Software Engineering undergraduate specializing in scalable web and cross-platform mobile application development. Technically proficient in Java (Spring Boot), the MERN Stack (MongoDB, Express.js, React.js, Node.js), React Native, and Python. Experienced in designing RESTful APIs, secure JWT authentication, payment gateway integration, and real-time communication systems. Adept at logical problem-solving and streamlined deployments using Docker and Vercel. A quick learner seeking a Junior Software Engineer role or Internship to leverage technical expertise in delivering innovative solutions.",
+    "I’m Lithira Jayanaka, a passionate Full-Stack Developer from Sri Lanka with experience in MERN stack, Java, and RESTful APIs. I enjoy building scalable, user-friendly applications and solving real-world problems through code. I’m continuously learning new technologies and improving my skills, aiming to grow as a developer while contributing to meaningful and impactful projects in the tech industry."
 };
 
 // Skills (from CV)
@@ -150,11 +150,13 @@ export const education = [
 export const leadership = [
   {
     role: "Coordinator & Member - IUSE Student Committee",
+    period: "2023 - Present",
     description:
       "Coordinated student activities and events. Managed communication between students and academic staff.",
   },
   {
     role: "Team Leader - Data Science Project (Code Pandas)",
+    period: "2026",
     description:
       "Led a 4-member team in the 'Strategic Patient Risk Stratification & Predictive Modeling' project.",
   },

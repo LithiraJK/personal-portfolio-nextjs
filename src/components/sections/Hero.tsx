@@ -194,7 +194,7 @@ const Hero = () => {
                 transition={{ delay: 0.4, duration: 0.6 }}
               >
                 <Image
-                  src="/images/profile.png"
+                  src="/images/lithira-jayanaka.png"
                   alt="Profile"
                   fill
                   className="object-cover"
