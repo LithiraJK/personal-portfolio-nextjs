@@ -13,14 +13,67 @@ const Contact = () => {
   const [name, setName] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [message, setMessage] = React.useState("");
+  const [company, setCompany] = React.useState("");
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
+  const [submitMessage, setSubmitMessage] = React.useState<{
+    type: "success" | "error";
+    text: string;
+  } | null>(null);
 
-  const onSubmit = (e: React.FormEvent) => {
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const subject = encodeURIComponent(`Portfolio inquiry from ${name || "Someone"}`);
-    const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}\n`,
-    );
-    window.location.href = `mailto:${personalInfo.email}?subject=${subject}&body=${body}`;
+
+    if (!name.trim() || !email.trim() || !message.trim()) {
+      setSubmitMessage({
+        type: "error",
+        text: "Please fill in name, email, and message.",
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitMessage(null);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          message,
+          company,
+        }),
+      });
+
+      const data = (await response.json()) as { error?: string };
+
+      if (!response.ok) {
+        setSubmitMessage({
+          type: "error",
+          text: data.error ?? "Something went wrong. Please try again.",
+        });
+        return;
+      }
+
+      setSubmitMessage({
+        type: "success",
+        text: "Message sent successfully. I will get back to you soon.",
+      });
+      setName("");
+      setEmail("");
+      setMessage("");
+      setCompany("");
+    } catch {
+      setSubmitMessage({
+        type: "error",
+        text: "Network error. Please try again in a moment.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -45,12 +98,23 @@ const Contact = () => {
         <div className="grid lg:grid-cols-2 gap-6">
           <div className="glass-strong rounded-(--radius) p-6 md:p-8 glow-border">
             <form onSubmit={onSubmit} className="space-y-4">
+              <input
+                type="text"
+                autoComplete="off"
+                tabIndex={-1}
+                aria-hidden="true"
+                value={company}
+                onChange={(e) => setCompany(e.target.value)}
+                className="hidden"
+              />
+
               <div>
                 <label className="text-xs text-muted-foreground">Name</label>
                 <input
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="Your name..."
+                  required
                   className="mt-2 w-full rounded-(--radius) bg-[color-mix(in_srgb,var(--color-surface)_60%,transparent)] border border-border px-4 py-3 text-sm outline-none focus:border-[color-mix(in_srgb,var(--color-primary)_70%,transparent)] focus:ring-2 focus:ring-[color-mix(in_srgb,var(--color-primary)_18%,transparent)]"
                 />
               </div>
@@ -62,6 +126,7 @@ const Contact = () => {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="your@email.com"
                   type="email"
+                  required
                   className="mt-2 w-full rounded-(--radius) bg-[color-mix(in_srgb,var(--color-surface)_60%,transparent)] border border-border px-4 py-3 text-sm outline-none focus:border-[color-mix(in_srgb,var(--color-primary)_70%,transparent)] focus:ring-2 focus:ring-[color-mix(in_srgb,var(--color-primary)_18%,transparent)]"
                 />
               </div>
@@ -73,12 +138,26 @@ const Contact = () => {
                   onChange={(e) => setMessage(e.target.value)}
                   placeholder="Your message..."
                   rows={5}
+                  required
                   className="mt-2 w-full resize-none rounded-(--radius) bg-[color-mix(in_srgb,var(--color-surface)_60%,transparent)] border border-border px-4 py-3 text-sm outline-none focus:border-[color-mix(in_srgb,var(--color-primary)_70%,transparent)] focus:ring-2 focus:ring-[color-mix(in_srgb,var(--color-primary)_18%,transparent)]"
                 />
               </div>
 
-              <Button className="w-full" type="submit">
-                Send Message <FiSend aria-hidden="true" />
+              {submitMessage ? (
+                <p
+                  role="status"
+                  className={
+                    submitMessage.type === "success"
+                      ? "text-sm text-emerald-400"
+                      : "text-sm text-red-400"
+                  }
+                >
+                  {submitMessage.text}
+                </p>
+              ) : null}
+
+              <Button className="w-full" type="submit" disabled={isSubmitting}>
+                {isSubmitting ? "Sending..." : "Send Message"} <FiSend aria-hidden="true" />
               </Button>
             </form>
           </div>
