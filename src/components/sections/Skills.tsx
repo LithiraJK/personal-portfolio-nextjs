@@ -144,8 +144,6 @@ export default function Skills() {
           titleClassName="text-balance"
         />
 
-        <FloatingSkills />
-
         <div
           data-reveal
           className="glass-strong rounded-(--radius) p-5 md:p-6 glow-border will-change-transform"
@@ -225,6 +223,8 @@ export default function Skills() {
             ))}
           </motion.div>
         </div>
+
+        <FloatingSkills />
       </div>
     </section>
   );

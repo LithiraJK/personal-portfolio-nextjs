@@ -29,12 +29,12 @@ export default function ContactEmail({
   return (
     <Html>
       <Head />
-      <Preview>New portfolio inquiry from {name}</Preview>
+      <Preview>New inquiry from {name}</Preview>
       <Tailwind>
         <Body className="m-0 bg-background py-10 font-sans text-foreground">
           <Container className="mx-auto w-full max-w-155 rounded-2xl border border-border bg-surface px-8 py-8">
             <Section className="mb-8">
-              <Text className="m-0 text-xs uppercase tracking-[0.24em] text-[#20b2a6]">
+              <Text className="m-0 text-xs uppercase tracking-[0.24em] text-[#08ffe6]">
                 Innovative Explorer
               </Text>
               <Heading className="mb-2 mt-3 text-[28px] leading-[1.2] text-foreground">
@@ -47,7 +47,7 @@ export default function ContactEmail({
 
             <Section className="rounded-xl border border-border bg-[#0b1117] px-5 py-5">
               <Heading className="m-0 text-[18px] text-foreground">
-                New Contact Form Message
+                New Contact Form
               </Heading>
               <Text className="mb-0 mt-4 text-sm text-[#9aa5b1]">Name</Text>
               <Text className="m-0 text-base text-foreground">{name}</Text>
@@ -65,7 +65,7 @@ export default function ContactEmail({
             <Section className="mt-7">
               <Button
                 href={`mailto:${email}`}
-                className="rounded-md bg-[#20b2a6] px-5 py-3 text-sm font-semibold text-background no-underline"
+                className="rounded-md bg-[#08ffe6] px-5 py-3 text-sm font-semibold text-black no-underline"
               >
                 Reply to {name}
               </Button>
@@ -81,7 +81,7 @@ export default function ContactEmail({
                 Portfolio: {" "}
                 <Link
                   href="https://lithira-jayanaka.vercel.app"
-                  className="text-[#20b2a6] no-underline"
+                  className="text-[#08ffe6] no-underline"
                 >
                   lithira-jayanaka.vercel.app
                 </Link>
